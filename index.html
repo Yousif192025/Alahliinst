@@ -38,6 +38,22 @@
             border-radius: 0 0 20px 20px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "الفصل الدراسي صفر 1447";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
         }
         
         header h1 {
@@ -144,6 +160,10 @@
             margin: 20px auto;
             width: 80%;
             transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
         }
         
         .btn:hover {
@@ -214,6 +234,80 @@
             header h1 {
                 font-size: 2rem;
             }
+            
+            header::before {
+                font-size: 0.7rem;
+                padding: 3px 10px;
+            }
+        }
+
+        /* Style for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.3s;
+            position: relative;
+        }
+
+        @keyframes modalFadeIn {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: left;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            left: 15px;
+            top: 10px;
+        }
+
+        .close-btn:hover {
+            color: black;
+        }
+
+        .whatsapp-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #25D366;
+            margin: 20px 0;
+            direction: ltr;
+        }
+
+        .copy-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .copy-btn:hover {
+            background-color: #128C7E;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -256,7 +350,7 @@
                         <span class="original-price">24,000 ر.س</span>
                     </div>
                     
-                    <a href="tel:0502161465" class="btn">سجل الآن</a>
+                    <button class="btn" onclick="showContactModal('دبلوم إدارة المستشفيات والخدمات الصحية')">سجل الآن</button>
                 </div>
             </div>
             
@@ -284,7 +378,7 @@
                         <span class="original-price">25,000 ر.س</span>
                     </div>
                     
-                    <a href="tel:0502161465" class="btn">سجل الآن</a>
+                    <button class="btn" onclick="showContactModal('دبلوم إدارة الخدمات اللوجستية')">سجل الآن</button>
                 </div>
             </div>
             
@@ -312,7 +406,7 @@
                         <span class="original-price">20,000 ر.س</span>
                     </div>
                     
-                    <a href="tel:0502161465" class="btn">سجل الآن</a>
+                    <button class="btn" onclick="showContactModal('دبلوم علوم الحاسب الآلي التطبيقي')">سجل الآن</button>
                 </div>
             </div>
             
@@ -340,7 +434,7 @@
                         <span class="original-price">10,200 ر.س</span>
                     </div>
                     
-                    <a href="tel:0502161465" class="btn">سجل الآن</a>
+                    <button class="btn" onclick="showContactModal('دبلوم إدارة الموارد البشرية')">سجل الآن</button>
                 </div>
             </div>
             
@@ -368,13 +462,14 @@
                         <span class="original-price">10,100 ر.س</span>
                     </div>
                     
-                    <a href="tel:0502161465" class="btn">سجل الآن</a>
+                    <button class="btn" onclick="showContactModal('دبلوم الإدارة المكتبية')">سجل الآن</button>
                 </div>
             </div>
+            
             <!-- Diploma 6 -->
             <div class="diploma-card">
                 <div class="diploma-header">
-                    <h3>دبلوم الامن السيبراني </h3>
+                    <h3>دبلوم الأمن السيبراني</h3>
                 </div>
                 <div class="diploma-body">
                     <div class="diploma-feature">
@@ -395,7 +490,7 @@
                         <span class="original-price">25,000 ر.س</span>
                     </div>
                     
-                    <a href="tel:0502161465" class="btn">سجل الآن</a>
+                    <button class="btn" onclick="showContactModal('دبلوم الأمن السيبراني')">سجل الآن</button>
                 </div>
             </div>
         </div>
@@ -405,22 +500,40 @@
             
             <div class="courses-grid">
                 <div class="course-card">
-                    <h3>دورة تاسيس اللغة الانجليزية </h3>
+                    <h3>دورة تأسيس اللغة الإنجليزية</h3>
                     <div class="course-price">300 ر.س</div>
-                    <p>دورة متخصصة في الاساسيات 3 شهور  </p>
+                    <p>دورة متخصصة في الأساسيات - 3 شهور</p>
                 </div>
                 
                 <div class="course-card">
                     <h3>دورة استخدام الحاسوب</h3>
                     <div class="course-price">300 ر.س</div>
-                    <p>دورة استخدام الحاسب في الاعمال</p>
+                    <p>دورة استخدام الحاسب في الأعمال</p>
                 </div>
                 
                 <div class="course-card">
                     <h3>دورة اللغة الإنجليزية</h3>
                     <div class="course-price">500 ر.س</div>
-                    <p> متوسطة - اللغة الإنجليزية</p>
+                    <p>متوسطة - اللغة الإنجليزية</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle">التسجيل في الدبلوم</h3>
+            <p>للتسجيل في <span id="diplomaName"></span>، يرجى التواصل عبر الواتساب على الرقم التالي:</p>
+            <div class="whatsapp-number">
+                <i class="fab fa-whatsapp"></i> 0502161465
+            </div>
+            <button class="copy-btn" onclick="copyNumber()">نسخ الرقم</button>
+            <div style="margin-top: 20px;">
+                <a href="https://wa.me/966502161465" class="whatsapp-btn" style="text-decoration: none;">
+                    <i class="fab fa-whatsapp"></i> فتح محادثة واتساب
+                </a>
             </div>
         </div>
     </div>
@@ -441,5 +554,35 @@
             <p style="margin-top: 30px; opacity: 0.8;">© 2025 جميع الحقوق محفوظة</p>
         </div>
     </footer>
+
+    <script>
+        // Function to show contact modal
+        function showContactModal(diplomaName) {
+            document.getElementById('diplomaName').textContent = diplomaName;
+            document.getElementById('modalTitle').textContent = 'التسجيل في ' + diplomaName;
+            document.getElementById('contactModal').style.display = 'block';
+        }
+
+        // Function to close modal
+        function closeModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        // Function to copy WhatsApp number
+        function copyNumber() {
+            const number = '0502161465';
+            navigator.clipboard.writeText(number).then(() => {
+                alert('تم نسخ الرقم: ' + number);
+            });
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
