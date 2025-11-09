@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 دبلومات معتمدة ومخفضة! المعهد الأهلي - سجل الآن واحصل على خصم الكاش</title> 
+    <meta name="description" content="سجل في دبلومات المعهد الأهلي العالي للتدريب المعتمدة من المؤسسة العامة للتدريب التقني والمهني. خصومات كاش تصل إلى 60% في إدارة المستشفيات، الموارد البشرية، الأمن السيبراني، وغيرها.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+        
+        :root {
+            --primary: #007bff; /* أزرق مشرق وجذاب بدلاً من اللون الداكن السابق */
+            --secondary: #2c3e50; /* يبقى كلون تكميلي داكن */
+            --accent: #ff4757; /* أحمر جذاب (لتنبيه الخصم) */
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #28a745; /* لون جديد للنجاح/الواتساب */
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--light); /* خلفية أفتح قليلاً */
+            color: var(--dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* إضافة للتمرير السلس */
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- شريط التثبيت العلوي (Sticky Bar) --- */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background-color: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            z-index: 999;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            display: none; /* يتم إظهاره لاحقاً بالـ JS عند التمرير */
+        }
+
+        .sticky-cta .btn {
+            background-color: var(--success);
+            margin: 0 15px;
+            padding: 8px 20px;
+            width: auto;
+            font-size: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        /* --- رأس الصفحة (Header) --- */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "✨ التسجيل مفتوح للفصل الجديد ✨"; /* نص أكثر جاذبية */
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            z-index: 10;
+        }
+        
+        header h1 {
+            margin: 10px 0 0; /* تعديل الهامش بعد الشريط العلوي */
+            font-size: 2.8rem; /* تكبير الخط */
+            font-weight: 900;
+        }
+        
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.4rem; /* تكبير الخط */
+            opacity: 0.9;
+        }
+        
+        .offer-badge {
+            background-color: var(--success); /* تغيير اللون للتأكيد على الاعتماد */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 15px 0 0; /* زيادة الهامش */
+            font-size: 1.1rem;
+        }
+
+        /* --- الخصومات والأسعار (Pricing) --- */
+        .price-details {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            margin: 20px 0;
+        }
+
+        .price {
+            font-size: 2.2rem; /* تكبير السعر المخفض */
+            font-weight: 900;
+            color: var(--accent);
+            margin: 0 10px;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.4rem; /* تكبير السعر الأصلي */
+            display: block;
+        }
+
+        /* --- بطاقات الدبلومات (Diplomas Card) --- */
+        .diplomas-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* تعديل الحد الأدنى لمرونة أكبر */
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .diploma-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid var(--primary); /* إضافة حدود لتبريز البطاقة */
+        }
+        
+        .diploma-card:hover {
+            transform: translateY(-5px); /* تخفيف الحركة */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .diploma-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .diploma-header h3 {
+            margin: 0;
+            font-size: 1.7rem; /* تكبير العنوان */
+        }
+
+        .diploma-body {
+            padding: 20px;
+        }
+        
+        .diploma-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px; /* زيادة الهامش */
+            font-size: 1.1rem;
+        }
+        
+        .diploma-feature i {
+            color: var(--accent); /* تغيير لون الأيقونات */
+            margin-left: 10px;
+            font-size: 1.4rem;
+        }
+
+        /* --- زر الإجراء (CTA Button) --- */
+        .btn {
+            display: block;
+            background: linear-gradient(135deg, var(--accent), #e83e8c); /* تدرج لوني أقوى لزر التسجيل */
+            color: white;
+            text-align: center;
+            padding: 15px; /* تكبير الزر */
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            margin: 25px auto 10px; /* زيادة الهامش */
+            width: 90%; /* تكبير عرض الزر */
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.2rem; /* تكبير خط الزر */
+        }
+        
+        .btn:hover {
+            transform: translateY(-4px); /* حركة أكبر */
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.4); /* ظل بلون الزر */
+            background: linear-gradient(135deg, #e83e8c, var(--accent));
+        }
+
+        /* --- قسم الدورات التأهيلية --- */
+        .courses-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* تخفيف العرض لمرونة أكبر */
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .course-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border-left: 5px solid var(--primary);
+            transition: background-color 0.3s;
+        }
+
+        .course-card:hover {
+            background-color: #e0e4e7;
+        }
+        
+        .course-price {
+            font-size: 1.6rem;
+            color: var(--success); /* تغيير لون السعر إلى الأخضر */
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* --- قسم المزايا البارزة (New Section) --- */
+        .highlights-section {
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .highlights-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .highlight-item {
+            width: 200px;
+            margin: 15px;
+        }
+
+        .highlight-item i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .highlight-item h4 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+        
+        /* --- تذييل الصفحة (Footer) --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0 80px; /* زيادة الهامش السفلي لإتاحة مساحة لشريط التثبيت */
+            margin-top: 50px;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .contact-info {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            direction: ltr; /* لضمان تنسيق رقم الهاتف */
+        }
+        
+        .whatsapp-btn {
+            background: var(--success);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #1e7e34;
+        }
+
+        /* --- إطارات الحركة (Animations) --- */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- تعديلات الهاتف (Media Queries) --- */
+        @media (max-width: 768px) {
+            .diplomas-container {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            header p {
+                font-size: 1.1rem;
+            }
+
+            header::before {
+                font-size: 0.8rem;
+                padding: 3px 10px;
+                top: 5px;
+            }
+
+            .sticky-cta {
+                padding: 8px 0;
+            }
+
+            .sticky-cta .btn {
+                font-size: 0.9rem;
+                padding: 6px 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="sticky-cta" id="stickyCta">
+        فرصة التسجيل مستمرة! 
+        <a href="#contactModal" class="btn" onclick="showContactModal('أحد الدبلومات')">سجل الآن</a>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>المعهد الأهلي العالي للتدريب</h1>
+            <p>🚀 نحو مستقبل مهني مشرق ببرامج تدريبية معتمدة</p>
+            <div class="offer-badge"><i class="fas fa-check-circle"></i> معتمدة من المؤسسة العامة للتدريب التقني والمهني</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        
+        <div class="highlights-section">
+            <h2 style="color: var(--accent);">لماذا تختار دبلوماتنا؟</h2>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h4>تخفيضات كبرى</h4>
+                </div>
+                <div class="highlight-item">
+                    <i class="fas fa-user-tie"></i>
+                    <h4>فرص وظيفية</h4>
+                </div>
+                <div class="highlight-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>شهادات موثوقة</h4>
+                </div>
+                <div class="highlight-item">
+                    <i class="fas fa-globe"></i>
+                    <h4>دراسة عن بُعد</h4>
+                </div>
+            </div>
+            <hr style="margin: 30px auto; border-color: #ddd; width: 50%;">
+        </div>
+        
+        <h2 style="text-align: center; color: var(--secondary); margin-bottom: 10px;">برامج الدبلومات المعتمدة بـ <span style="color: var(--accent);">خصم الكاش المميز!</span></h2>
+        <p style="text-align: center; margin-bottom: 30px; color: #666; font-size: 1.1rem; font-weight: bold;">اغتنم الفرصة الآن. مقاعد محدودة لبدء حياتك المهنية في التخصصات المطلوبة.</p>
+        
+        <div class="diplomas-container">
+            <div class="diploma-card">
+                <div class="diploma-header">
+                    <h3>دبلوم إدارة المستشفيات والخدمات الصحية 🏥</h3>
+                </div>
+                <div class="diploma-body">
+                    <div class="diploma-feature">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>المدة: سنتان ونصف (87 ساعة معتمدة)</span>
+                    </div>
+                    <div class="diploma-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>الاعتماد: المؤسسة العامة للتدريب التقني</span>
+                    </div>
+                    <div class="diploma-feature">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>نمط الدراسة: عن بُعد (مرن)</span>
+                    </div>
+                    <div class="price-details">
+                        <span class="original-price">24,000 ر.س</span>
+                        <div class="price">
+                            9,999 ر.س
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="showContactModal('دبلوم إدارة المستشفيات والخدمات الصحية')">سجل بـ 9,999 ر.س فقط!</button>
+                </div>
+            </div>
+            
+            <div class="diploma-card">
+                <div class="diploma-header">
+                    <h3>دبلوم إدارة الخدمات اللوجستية 🚛</h3>
+                </div>
+                <div class="diploma-body">
+                    <div class="diploma-feature">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>المدة: سنتان ونصف (87 ساعة معتمدة)</span>
+                    </div>
+                    <div class="diploma-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>الاعتماد: المؤسسة العامة للتدريب التقني</span>
+                    </div>
+                    <div class="diploma-feature">
+                        <i class="fas fa-chart-line"></i>
+                        <span>مطلوب بقوة في سوق العمل</span>
+                    </div>
+                    <div class="price-details">
+                        <span class="original-price">25,000 ر.س</span>
+                        <div class="price">
+                            8,999 ر.س
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="showContactModal('دبلوم إدارة الخدمات اللوجستية')">سجل بـ 8,999 ر.س فقط!</button>
+                </div>
+            </div>
+            
+            <div class="diploma-card">
+                <div class="diploma-header">
+                    <h3>دبلوم علوم الحاسب الآلي التطبيقي 💻</h3>
+                </div>
+                <div class="diploma-body">
+                    <div class="diploma-feature">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>المدة: سنتان ونصف (86 ساعة معتمدة)</span>
+                    </div>
+                    <div class="diploma-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>الاعتماد: المؤسسة العامة للتدريب التقني</span>
+                    </div>
+                    <div class="diploma-feature">
+                        <i class="fas fa-microchip"></i>
+                        <span>تخصص عصري ومستقبلي</span>
+                    </div>
+                    <div class="price-details">
+                        <span class="original-price">20,000 ر.س</span>
+                        <div class="price">
+                            7,499 ر.س
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="showContactModal('دبلوم علوم الحاسب الآلي التطبيقي')">سجل بـ 7,499 ر.س فقط!</button>
+                </div>
+            </div>
+            
+            <div class="diploma-card">
+                <div class="diploma-header">
+                    <h3>دبلوم إدارة الموارد البشرية 👥</h3>
+                </div>
+                <div class="diploma-body">
+                    <div class="diploma-feature">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>المدة: سنتان ونصف (79 ساعة معتمدة)</span>
+                    </div>
+                    <div class="diploma-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>الاعتماد: المؤسسة العامة للتدريب التقني</span>
+                    </div>
+                    <div class="diploma-feature">
+                        <i class="fas fa-building"></i>
+                        <span>أساس لكل الشركات</span>
+                    </div>
+                    <div class="price-details">
+                        <span class="original-price">10,200 ر.س</span>
+                        <div class="price">
+                            5,499 ر.س
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="showContactModal('دبلوم إدارة الموارد البشرية')">سجل بـ 5,499 ر.س فقط!</button>
+                </div>
+            </div>
+
+            <div class="diploma-card">
+                <div class="diploma-header">
+                    <h3>دبلوم الإدارة المكتبية 🗄️</h3>
+                </div>
+                <div class="diploma-body">
+                    <div class="diploma-feature">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>المدة: سنتان ونصف (80 ساعة معتمدة)</span>
+                    </div>
+                    <div class="diploma-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>الاعتماد: المؤسسة العامة للتدريب التقني</span>
+                    </div>
+                    <div class="diploma-feature">
+                        <i class="fas fa-clipboard-check"></i>
+                        <span>مهارات أساسية للإدارة</span>
+                    </div>
+                    <div class="price-details">
+                        <span class="original-price">10,100 ر.س</span>
+                        <div class="price">
+                            5,499 ر.س
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="showContactModal('دبلوم الإدارة المكتبية')">سجل بـ 5,499 ر.س فقط!</button>
+                </div>
+            </div>
+
+            <div class="diploma-card">
+                <div class="diploma-header">
+                    <h3>دبلوم الأمن السيبراني 🛡️</h3>
+                </div>
+                <div class="diploma-body">
+                    <div class="diploma-feature">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>المدة: سنتان ونصف (83 ساعة معتمدة)</span>
+                    </div>
+                    <div class="diploma-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>الاعتماد: المؤسسة العامة للتدريب التقني</span>
+                    </div>
+                    <div class="diploma-feature">
+                        <i class="fas fa-lock"></i>
+                        <span>أحد تخصصات رؤية 2030</span>
+                    </div>
+                    <div class="price-details">
+                        <span class="original-price">25,000 ر.س</span>
+                        <div class="price">
+                            8,999 ر.س
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="showContactModal('دبلوم الأمن السيبراني')">سجل بـ 8,999 ر.س فقط!</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="courses-section">
+            <h2 style="text-align: center; color: var(--secondary); margin-bottom: 20px;">الدورات التأهيلية <span style="color: var(--success);">(بأسعار رمزية)</span></h2>
+            
+            <div class="courses-grid">
+                <div class="course-card">
+                    <h3>دورة تأسيس اللغة الإنجليزية 🗣️</h3>
+                    <div class="course-price">300 ر.س</div>
+                    <p>دورة متخصصة في الأساسيات - 3 شهور</p>
+                    <button class="whatsapp-btn" style="width: 100%; margin-top: 10px; font-size: 0.9rem;">استفسر عن الدورة</button>
+                </div>
+                
+                <div class="course-card">
+                    <h3>دورة استخدام الحاسوب 🖱️</h3>
+                    <div class="course-price">300 ر.س</div>
+                    <p>دورة استخدام الحاسب في الأعمال</p>
+                    <button class="whatsapp-btn" style="width: 100%; margin-top: 10px; font-size: 0.9rem;">استفسر عن الدورة</button>
+                </div>
+                
+                <div class="course-card">
+                    <h3>دورة اللغة الإنجليزية (متوسط) 📘</h3>
+                    <div class="course-price">500 ر.س</div>
+                    <p>المستوى المتوسط في اللغة الإنجليزية</p>
+                    <button class="whatsapp-btn" style="width: 100%; margin-top: 10px; font-size: 0.9rem;">استفسر عن الدورة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle">التسجيل في الدبلوم</h3>
+            <p style="font-size: 1.1rem; font-weight: bold;">خطوتك الأولى لمستقبلك تبدأ هنا! <br>للتسجيل في <span id="diplomaName" style="color: var(--primary);"></span>، يرجى التواصل فوراً عبر الواتساب:</p>
+            <div class="whatsapp-number" id="whatsappNumber">
+                <i class="fab fa-whatsapp"></i> +966 50 216 1465
+            </div>
+            <button class="copy-btn" onclick="copyNumber()">نسخ الرقم</button>
+            <div style="margin-top: 20px;">
+                <a href="https://wa.me/966502161465?text=أهلاً،%20أرغب%20في%20التسجيل%20بدبلوم%20[اسم%20الدبلوم%20هنا]" class="whatsapp-btn" style="text-decoration: none; padding: 15px 30px; font-size: 1.1rem;">
+                    <i class="fab fa-whatsapp"></i> ابدأ محادثة واتساب
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <h3>المعهد الأهلي العالي للتدريب</h3>
+            <p>📍 محافظة القريات - المملكة العربية السعودية</p>
+            
+            <div class="contact-info">
+                <i class="fas fa-phone-alt"></i> <span style="direction: ltr;">+966 50 216 1465</span>
+            </div>
+            
+            <a href="https://wa.me/966502161465" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> تواصل معنا مباشرة
+            </a>
+            
+            <p style="margin-top: 30px; opacity: 0.7; font-size: 0.8rem;">
+                برامجنا معتمدة ورسومنا شاملة الكتب والشهادات. <br>
+                © 2025 جميع الحقوق محفوظة للمعهد الأهلي العالي للتدريب.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // دالة لإظهار المودال
+        function showContactModal(diplomaName) {
+            document.getElementById('diplomaName').textContent = diplomaName;
+            document.getElementById('modalTitle').textContent = 'التسجيل في ' + diplomaName;
+            document.getElementById('contactModal').style.display = 'block';
+
+            // إضافة نص مخصص لرابط الواتساب
+            const whatsappLink = document.querySelector('#contactModal a.whatsapp-btn');
+            const message = encodeURIComponent(`أهلاً، أرغب في التسجيل بدبلوم ${diplomaName}، يرجى تزويدي بالتفاصيل.`);
+            whatsappLink.href = `https://wa.me/966502161465?text=${message}`;
+        }
+
+        // دالة لإغلاق المودال
+        function closeModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        // دالة لنسخ رقم الواتساب
+        function copyNumber() {
+            const number = '0502161465';
+            navigator.clipboard.writeText(number).then(() => {
+                const copyButton = document.querySelector('.copy-btn');
+                copyButton.textContent = 'تم النسخ!';
+                setTimeout(() => {
+                    copyButton.textContent = 'نسخ الرقم';
+                }, 2000);
+            });
+        }
+
+        // إغلاق المودال عند النقر خارجها
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // إظهار وإخفاء شريط التثبيت (Sticky CTA) عند التمرير
+        window.onscroll = function() {
+            const stickyCta = document.getElementById('stickyCta');
+            const headerHeight = document.querySelector('header').offsetHeight;
+
+            if (window.pageYOffset > headerHeight) {
+                stickyCta.style.display = 'flex';
+            } else {
+                stickyCta.style.display = 'none';
+            }
+        };
+
+        // لتفعيل النقر على زر "استفسر عن الدورة" للدورات التأهيلية
+        document.querySelectorAll('.course-card .whatsapp-btn').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const courseTitle = this.closest('.course-card').querySelector('h3').textContent.trim();
+                const message = encodeURIComponent(`أهلاً، أرغب في الاستفسار عن ${courseTitle}.`);
+                window.location.href = `https://wa.me/966502161465?text=${message}`;
+            });
+        });
+
+    </script>
+</body>
+</html>
